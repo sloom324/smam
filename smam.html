@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="">
+    <title>K X</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <link rel="shortcut icon" href="https://i.hizliresim.com/Y6kG0k.jpg">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .video-bg video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false" bgcolor="black">
+
+    <div class="video-bg">
+        <video autoplay muted loop>
+            <source src="https://cdn.discordapp.com/attachments/1273130130046451752/1273133285869879348/Adolf_Hitler__Speech_at_Krupp_Factory_in_Germany_1935___British_Pathe.mp4?ex=66e26b45&is=66e119c5&hm=dfc3f6052d1bb99fcbf50d7762e21c7907059d7ea463e9f945897f56aeae8533&" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="content">
+        <center><br><br>
+        <div class="imagehold">
+            <img src="https://i.pinimg.com/736x/bc/18/3f/bc183f2231612536d959efcb44fb5cd4.jpg" width="300" height="398">
+            <div style="color:red;font:12pt Courier New;"></div><br>
+            <div style="color:red;font:15pt Courier New;"><b>   Hello Fack you  3>  </b></div><br>
+            <div style="color:#FF0000;font:12pt Courier New;"><b><font color="white"> Discord.gg/1b5 | Group 1b5 </font></b></div><br><br>
+            <audio autoplay>
+                <source src="https://cdn.discordapp.com/attachments/1273130130046451752/1273130214846889995/2PACINSTA.mp3?ex=66e26868&is=66e116e8&hm=5264a5d5add73b335a106a0277ce320509f921ad6c2d5c3de4e585b72029d599&" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </center>
+        <br><br>
+        <center><font color="red"> vMashal in Your Server </font></center>
+        <br><br>
+        <div style="color:white;">
+            <b>your ip Address:</b> <span id="ip-address-value">Hmm 1b5 ...</span><br>
+            <b>ip information:</b>
+             <pre id="ip-info">Fetching...</pre>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        //form tags to omit in NS6+:
+        var omitformtags=["input", "textarea", "select"];
+        omitformtags=omitformtags.join("|");
+
+        function disableselect(e){
+            if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+                return false;
+        }
+
+        function reEnable(){
+            return true;
+        }
+
+        if (typeof document.onselectstart != "undefined")
+            document.onselectstart = new Function ("return false");
+        else {
+            document.onmousedown = disableselect;
+            document.onmouseup = reEnable;
+        }
+
+        // JavaScript code to fetch and display the user's IP address and information
+        function fetchIPAndInfo() {
+            fetch('https://api.ipify.org/?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address-value').textContent = data.ip;
+                    return data.ip;
+                })
+                .then(ip => fetch(`https://ipinfo.io/${ip}/json`))
+                .then(response => response.json())
+                .then(ipInfoData => {
+                    document.getElementById('ip-info').textContent = JSON.stringify(ipInfoData, null, 2);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('ip-address-value').textContent = 'Unable to fetch IP address.';
+                    document.getElementById('ip-info').textContent = 'Unable to fetch IP information.';
+                });
+        }
+
+        // Fetch IP address and information initially
+        fetchIPAndInfo();
+    </script>
+</body>
+</html>
